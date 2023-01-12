@@ -11,35 +11,35 @@
   </div>
   <div class="flex-child-half">
     <h1>Sign In</h1>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <% if defined?(notice) %>
-          <p class="notice"><%= notice %></p>
-        <% end %>
-        <% if defined?(alert) %>
-          <p class="alert"><%= alert %></p>
-        <% end %>
-        <p>Existing user? Please enter your login details to continue</p>
-        <p>
-          <label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail", required: true %>
-          </label>
-        </p>
-        <p>
-          <label>
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
-          </label>
-        </p>
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-          <%= f.submit "Sign In", class: "margin-top-20" %>
-        <% end %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
       <% end %>
-      <p class="padding-top-20"><a class="action-link" href="redirect.php">Login with Google</a></p>
-      <p class="padding-top-40">Don't have an account yet? Create a free account today</p>
-      <a class="action-link" href="<%= new_registration_path(resource_name) %>">Create Account →</a>
-      <p class="padding-top-20"><%= render "devise/shared/links" %></p>
-      </div>
+      <% if alert.present? %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <p>Existing user? Please enter your login details to continue</p>
+      <p>
+        <label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail", required: true %>
+        </label>
+      </p>
+      <p>
+        <label>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+        </label>
+      </p>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <%= f.submit "Sign In", class: "margin-top-20" %>
+    <% end %>
+    <p class="padding-top-20"><a class="action-link" href="redirect.php">Login with Google</a></p>
+    <p class="padding-top-40">Don't have an account yet? Create a free account today</p>
+    <a class="action-link" href="<%= new_registration_path(resource_name) %>">Create Account →</a>
+    <p class="padding-top-20"><%= render "devise/shared/links" %></p>
+  </div>
 </div>

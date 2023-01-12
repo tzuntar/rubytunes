@@ -1,29 +1,48 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="header-center top-padding">
+  <a href="<%= root_url %>" class="logo">
+    <%= image_tag "logo.svg", alt: "Logo" %>
+    <p>EpicTunes</p>
+  </a>
+</div>
+<div class="div-center padding-top-40">
+  <h1>Create Account</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <p>Please enter your information to create an account</p>
+    <p>
+      <label>
+        <%= f.text_field :name, autofocus: true, placeholder: "Name", required: true %>
+      </label>
+    </p>
+    <p>
+      <label>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail", required: true %>
+      </label>
+    </p>
+    <p>
+      <label>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", required: true %>
+      </label>
+    </p>
+    <p>
+      <label>
+        <%= f.password_field :password_confirmation, placeholder: "Re-enter the password", required: true %>
+      </label>
+    </p>
+    <p>
+      <label class="fine-print w-40">
+        <input type="checkbox" name="privacy_confirm" required>
+        I have read and agree to the terms and conditions.
+      </label>
+    </p>
+    <%= f.submit "Sign Up", class: "margin-top-20" %>
+  <% end %>
+  <p class="padding-top-40">Already have an account? Sign in instead</p>
+  <a class="action-link" href="<%= new_session_path(resource_name) %>">Sign In →</a>
+</div>
