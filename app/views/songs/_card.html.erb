@@ -5,10 +5,10 @@
     </div>
     <div class="flex-container flex-grow-right">
       <div>
-        <p><%= link_to @song.title, song_url %></p>
+        <p><%= link_to card.title, url_for(card) %></p>
         <p class="sub-label">
-          <% @song.artists do |artist| %>
-            <%= link_to artist.title, artist_url %>
+          <% card.artists.each do |artist| %>
+            <%= link_to artist.name, url_for(artist) %>
           <% end %>
         </p>
       </div>

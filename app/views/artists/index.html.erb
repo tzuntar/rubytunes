@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<h1>Artists</h1>
+    <main>
+      <h2 class="accent padding-20">My Artists</h2>
+      <div class="margin-top-20">
+        <%= render partial: 'card', collection: @artists %>
+      </div>
+    </main>
 
-<div id="artists">
-  <% @artists.each do |artist| %>
-    <%= render artist %>
-    <p>
-      <%= link_to "Show this artist", artist %>
-    </p>
-  <% end %>
+  </div>
 </div>
-
-<%= link_to "New artist", new_artist_path %>

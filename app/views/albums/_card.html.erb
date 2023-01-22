@@ -1,0 +1,15 @@
+<div class="song-list-card">
+  <div class="flex-container">
+    <div>
+      <%= image_tag 'icons/avatar.svg', alt: "Album Art", class: 'album-art-list' %>
+    </div>
+    <div>
+      <p><%= link_to card.title, url_for(card) %></p>
+      <p class="sub-label">
+        <% card.artists.each do |artist| %>
+          <%= link_to artist.name, url_for(artist) %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

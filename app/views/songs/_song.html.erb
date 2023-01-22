@@ -5,13 +5,13 @@
     </button>
     <a href="song.php?id=<?= $_GET['id'] ?>&action=save">
       <button id="saveButton" class="play-button">
-        <img class="icon-make-smaller" alt="Save"
-             src="./assets/img/icons/<?= $isSaved ? 'unsave.svg' : 'save.svg' ?>"/>
+        <%# ToDo: use the 'unsave' icon if the song's already been saved %>
+        <%= image_tag 'icons/save', class: 'icon-make-smaller', alt: 'Save' %>
       </button>
     </a>
   </div>
   <div class="grid-col">
-    <h1 class="song-name"><%= @song.title %></h1>
+    <h1 class="song-name"><%= song.title %></h1>
     <div class="grid-row">
       <div id="mp3player-container">
         <div id="mp3player">
@@ -39,15 +39,14 @@
     <%= image_tag 'icons/avatar', class: 'artist-photo', alt: "Artist's Photo" %>
   </div>
   <div class="grid-col">
-    <h2><a class="accent" href="artist.php?id=<?= $mainArtistId ?>"><?= $mainArtist->name ?></a>
-      <?php if (sizeof($songData->artists) > 1) { ?>
-      <strong class="fine-print"> • </strong>
-      <?php for ($i = 1; $i < sizeof($songData->artists); $i++) { ?>
-      <a class="action-link fine-print"
-         href="artist.php?id=<?= $songData->artists[$i]->id ?>"><?= $songData->artists[$i]->name ?></a>
-      <?php } ?>
-      <?php } ?>
+    <h2><%= link_to song.artists.first.name, url_for(song.artists.first) %>
+      <% if song.artists.count > 1 %>
+        <strong class="fine-print"> • </strong>
+        <% song.artists[1..1] do |artist| %>
+          <%= link_to artist.name, url_for(artist), class: 'action-link fine-print' %>
+        <% end %>
+      <% end %>
     </h2>
-    <a class="action-link fine-print" href="artist.php?id=<?= $mainArtistId ?>">View profile →</a>
+    <%= link_to 'View Profile →', url_for(song.artists.first), class: 'action-link fine-print' %>
   </div>
 </section>
