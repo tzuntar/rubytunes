@@ -1,12 +1,12 @@
 <div class="header-center top-padding">
   <a href="<%= root_url %>" class="logo">
     <%= image_tag "logo.svg", alt: "Logo" %>
-    <p>EpicTunes</p>
+    <p>RubyTunes</p>
   </a>
 </div>
 <div class="div-center padding-top-40">
   <h1>Create Account</h1>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <% if notice.present? %>
       <p class="notice"><%= notice %></p>

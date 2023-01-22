@@ -1,0 +1,30 @@
+<div class="sidebar">
+  <%= link_to image_tag('logo', alt: 'Logo') + 'RubyTunes', root_url, class: 'logo' %>
+  <nav>
+    <p>Menu</p>
+    <ul>
+      <li><%= link_to image_tag('icons/home') + 'My Music', songs_url %></li>
+      <li><%= link_to image_tag('icons/upload') + 'Upload', 'FIXME' %></li>
+      <li><%= link_to image_tag('icons/search') + 'Search', 'FIXME' %></li>
+    </ul>
+    <p>Library</p>
+    <ul>
+      <li><%= link_to image_tag('icons/album') + 'Albums', albums_url %></li>
+      <li><%= link_to image_tag('icons/artist') + 'Artists', artists_path %></li>
+    </ul>
+    <% if current_user.admin? %>
+    <p>Administration</p>
+    <ul>
+      <li><%= link_to image_tag('icons/stats') + 'Stats', 'FIXME' %></li>
+      <li><%= link_to image_tag('icons/music') + 'Manage Songs', songs_url %></li>
+      <li><%= link_to image_tag('icons/cohort') + 'Manage Users', 'FIXME' %></li>
+    </ul>
+    <% end %>
+    <p>Account</p>
+    <ul>
+      <li><%= link_to image_tag('icons/music') + 'Posted Songs', 'FIXME' %></li>
+      <li><%= link_to image_tag('icons/settings') + 'Preferences', 'FIXME' %></li>
+      <li><%= link_to image_tag('icons/logout') + 'Log Out', destroy_user_session_path, data: {turbo_method: :delete} %></li>
+    </ul>
+  </nav>
+</div>

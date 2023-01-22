@@ -1,7 +1,7 @@
 <div class="header-center top-padding">
   <a href="<%= root_url %>" class="logo">
     <%= image_tag "logo.svg", alt: "Logo" %>
-    <p>EpicTunes</p>
+    <p>RubyTunes</p>
   </a>
 </div>
 <div class="flex-container">
@@ -12,6 +12,7 @@
   <div class="flex-child-half">
     <h1>Sign In</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
       <% if notice.present? %>
         <p class="notice"><%= notice %></p>
       <% end %>

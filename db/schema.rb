@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_082241) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_101008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +20,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_082241) do
     t.string "art_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "albums_artists", id: false, force: :cascade do |t|
+    t.bigint "album_id", null: false
     t.bigint "artist_id", null: false
-    t.index ["artist_id"], name: "index_albums_on_artist_id"
+    t.index ["album_id", "artist_id"], name: "index_albums_artists_on_album_id_and_artist_id"
+    t.index ["artist_id", "album_id"], name: "index_albums_artists_on_artist_id_and_album_id"
+  end
+
+  create_table "albums_songs", id: false, force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "song_id", null: false
+    t.index ["album_id", "song_id"], name: "index_albums_songs_on_album_id_and_song_id"
+    t.index ["song_id", "album_id"], name: "index_albums_songs_on_song_id_and_album_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -31,10 +43,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_082241) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "artists_songs", id: false, force: :cascade do |t|
+    t.bigint "song_id", null: false
+    t.bigint "artist_id", null: false
+    t.index ["artist_id", "song_id"], name: "index_artists_songs_on_artist_id_and_song_id"
+    t.index ["song_id", "artist_id"], name: "index_artists_songs_on_song_id_and_artist_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "song_id", null: false
+    t.index ["song_id"], name: "index_comments_on_song_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -44,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_082241) do
     t.datetime "updated_at", null: false
     t.string "file_url"
     t.bigint "album_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["user_id"], name: "index_songs_on_user_id"
   end
@@ -64,7 +87,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_082241) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "albums", "artists"
+  add_foreign_key "albums_artists", "albums"
+  add_foreign_key "albums_artists", "artists"
+  add_foreign_key "albums_songs", "albums"
+  add_foreign_key "albums_songs", "songs"
+  add_foreign_key "artists_songs", "artists"
+  add_foreign_key "artists_songs", "songs"
+  add_foreign_key "comments", "songs"
+  add_foreign_key "comments", "users"
   add_foreign_key "songs", "albums"
   add_foreign_key "songs", "users"
 end

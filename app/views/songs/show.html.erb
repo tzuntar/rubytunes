@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<%= render @song %>
+    <main>
+      <div class="margin-top-20">
+        <%= render @song %>
+        <%= render partial: 'comments', locals: @song %>
+      </div>
+    </main>
 
-<div>
-  <%= link_to "Edit this song", edit_song_path(@song) %> |
-  <%= link_to "Back to songs", songs_path %>
-
-  <%= button_to "Destroy this song", @song, method: :delete %>
+  </div>
 </div>

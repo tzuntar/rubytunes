@@ -1,0 +1,23 @@
+<div class="song-list-card">
+  <div class="flex-container">
+    <div>
+      <%= image_tag 'icons/avatar', class: 'album-art-list', alt: 'Album Art' %>
+    </div>
+    <div class="flex-container flex-grow-right">
+      <div>
+        <!--<p><a href="song.php?id=<?= $song->id ?>"><?= $song->title ?></a></p>-->
+        <p><%= link_to @song.title, @song.path %></p>
+        <p class="sub-label">
+          <% @song.artists.each do |artist| %>
+            <%= link_to artist.name, artist.path %>
+          <% end %>
+      </div>
+      <!--<?php if ($adminEditControls) { ?>
+      <div>
+        <p><a href="edit_song.php?id=<?= $song->id ?>" class="action-link">Edit →</a></p>
+        <p><a href="delete_song.php?id=<?= $song->id ?>" class="action-link">Delete</a></p>
+      </div>
+      <?php } ?>-->
+    </div>
+  </div>
+</div>

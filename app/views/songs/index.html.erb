@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<h1>Songs</h1>
+    <main>
+      <h2 class="accent padding-20">My Music</h2>
+      <div class="margin-top-20">
+        <%= render partial: 'card', collection: @songs %>
+      </div>
+    </main>
 
-<div id="songs">
-  <% @songs.each do |song| %>
-    <%= render song %>
-    <p>
-      <%= link_to "Show this song", song %>
-    </p>
-  <% end %>
+  </div>
 </div>
-
-<%= link_to "New song", new_song_path %>
