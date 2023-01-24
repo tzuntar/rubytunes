@@ -1,9 +1,76 @@
-<h1>New song</h1>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<%= render "form", song: @song %>
+    <main class="padding-20">
+      <%= form_with model: @song do |form| %>
+        <h1 class="step-number">1</h1>
+        <h2 class="step-heading accent">Song File</h2>
+        <div class="margin-top-20">
+          <p>
+            Select an MP3 file:
+            <%= form.file_field :mp3, accept: 'mp3', required: true %>
+          </p>
+          <p class="fine-print">Only upload files you have the rights to.
+            Unauthorized uploading of copyrighted content is illegal and will
+            result in an immediate account termination.</p>
+        </div>
 
-<br>
+        <hr/>
 
-<div>
-  <%= link_to "Back to songs", songs_path %>
+        <h1 class="step-number">2</h1>
+        <h2 class="step-heading accent">Song Data</h2>
+        <div class="margin-top-20">
+          <div class="grid-container meta-edit-grid">
+            <div class="grid-col">
+              <table class="edit-table">
+                <tr>
+                  <td><p class="field-label">Title:</p></td>
+                  <td><%= form.text_field :title, placeholder: 'Song title', required: true %></td>
+                </tr>
+                <tr>
+                  <td><p class="field-label">Collaborators:</p></td>
+                  <td><%= form.text_field :collaborators, required: true,
+                                          placeholder: 'Collaborator names (separated by commas)' %></td>
+                </tr>
+                <tr>
+                  <td><p class="field-label">Album:</p></td>
+                  <td><%= form.text_field :album_title, placeholder: 'Album title', required: true %></td>
+                </tr>
+                <tr>
+                  <td><p class="field-label">...by:</p></td>
+                  <td><%= form.text_field :album_artists, required: true,
+                                          placeholder: 'Album artist names (separated by commas)' %></td>
+                </tr>
+                <tr>
+                  <td><p class="field-label">Genre:</p></td>
+                  <td><%= form.text_field :genre, placeholder: 'Song genre', required: true %></td>
+                </tr>
+                <tr>
+                  <td><p class="field-label">Tags:</p></td>
+                  <td><%= form.text_field :tags, placeholder: 'Tags (separated by commas)' %></td>
+                </tr>
+              </table>
+            </div>
+            <%# if @song.album.album_art.present? %>
+            <!--<div class="grid-col">
+              <%= image_tag 'icons/avatar', class: 'album-art-big', alt: 'Album Art' %>
+            </div>-->
+            <%# end %>
+          </div>
+          <p>
+            <%= form.check_box :confirmation, required: true %>
+            I have the rights to upload this audio file. I agree to bear any
+            responsibility for the content I publish on this website.
+          </p>
+          <p class="header-center">
+            <%= form.submit value: 'Publish', class: 'margin-top-20' %>
+          </p>
+        </div>
+
+        </main>
+      <% end %>
+
+      </div>
 </div>

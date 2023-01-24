@@ -10,7 +10,7 @@
   <div class="profile-photo">
     <a href="user_settings.php">
       <div class="flex-container">
-        <%= image_tag current_user.profile_image_url.present? ? current_user.profile_image_url : 'icons/avatar' %>
+        <%= image_tag current_user.profile_pic.attached? ? current_user.profile_pic : 'icons/avatar' %>
         <p><%= current_user.name %></p>
       </div>
     </a>
