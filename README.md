@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="./assets/img/logo.svg" alt="RubyTunes Logo"></a>
+ <img width=200px height=200px src="./app/assets/images/logo.svg" alt="RubyTunes Logo"></a>
 </p>
 
 <h3 align="center">RubyTunes</h3>
