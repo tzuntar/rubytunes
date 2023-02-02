@@ -3,4 +3,5 @@ class Album < ApplicationRecord
   has_many :songs, dependent: :destroy
   has_and_belongs_to_many :artists, dependent: :destroy
   has_one_attached :album_art
+  accepts_nested_attributes_for :artists
 end

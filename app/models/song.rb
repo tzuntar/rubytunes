@@ -5,4 +5,6 @@ class Song < ApplicationRecord
   has_one_attached :mp3
   belongs_to :album, dependent: :destroy
   belongs_to :user, dependent: :destroy
+  accepts_nested_attributes_for :album
+  accepts_nested_attributes_for :artists
 end
