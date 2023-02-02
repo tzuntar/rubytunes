@@ -1,24 +1,55 @@
-# README
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="./assets/img/logo.svg" alt="RubyTunes Logo"></a>
+</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h3 align="center">RubyTunes</h3>
 
-Things you may want to cover:
+---
 
-* Ruby version
+<p align="center">World's Most Epic Music Streaming Platform 
+    <br> 
+</p>
 
-* System dependencies
+## 📝 Table of Contents
 
-* Configuration
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-* Database creation
+## 🎵 About <a name = "about"></a>
 
-* Database initialization
+This is the repository of RubyTunes, the best music streaming platform out there.
 
-* How to run the test suite
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-* Services (job queues, cache servers, search engines, etc.)
+These instructions will get you a copy of the RubyTunes up and running on your local machine for development and testing
+purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-* Deployment instructions
+### ✅ Prerequisites <a name = "prerequisites"></a>
 
-* ...
+- PHP >= 7.4
+- Composer
+- A working MySQL instance
+
+### ⏳Installing
+
+1. Install Ruby on Rails and PostgreSQL
+2. Set up the database by running `rails db:setup`
+3. Run the Rails server:
+   - for development: `bin/dev`
+   - for production: `rails s`
+
+## 🚀 Deployment <a name = "deployment"></a>
+
+Check the configuration files in the `app/config` directory, (optionally) set up ActiveStorage on a cloud provider.
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@tzuntar](https://github.com/tzuntar) - Development
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+This project was inspired by SoundCloud and Spotify.
