@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<%= render @artist %>
+    <main>
+      <div class="margin-top-20">
+        <%= render @artist %>
+        <%= render partial: 'songs', locals: {artist: @artist} %>
+      </div>
+    </main>
 
-<div>
-  <%= link_to "Edit this artist", edit_artist_path(@artist) %> |
-  <%= link_to "Back to artists", artists_path %>
-
-  <%= button_to "Destroy this artist", @artist, method: :delete %>
+  </div>
 </div>

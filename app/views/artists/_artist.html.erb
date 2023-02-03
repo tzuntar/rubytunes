@@ -1,12 +1,8 @@
-<div id="<%= dom_id artist %>">
-  <p>
-    <strong>Name:</strong>
-    <%= artist.name %>
-  </p>
-
-  <p>
-    <strong>Photo url:</strong>
-    <%= artist.photo_url %>
-  </p>
-
-</div>
+<section class="user-summary-division grid-container">
+  <div class="grid-col centered-flex-container">
+    <%= image_tag 'icons/avatar.svg', class: 'user-profile-pic', alt: "Artist's Profile Picture" %>
+  </div>
+  <div class="grid-col">
+    <h1 class="user-name"><%= @artist.name %></h1>
+  </div>
+</section>
