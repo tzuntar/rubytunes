@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<%= render @album %>
+    <main>
+      <div class="margin-top-20">
+        <%= render @album %>
+        <%= render partial: 'songs', locals: {album: @album} %>
+      </div>
+    </main>
 
-<div>
-  <%= link_to "Edit this album", edit_album_path(@album) %> |
-  <%= link_to "Back to albums", albums_path %>
-
-  <%= button_to "Destroy this album", @album, method: :delete %>
+  </div>
 </div>
