@@ -6,7 +6,7 @@
     <main>
       <div class="margin-top-20">
         <%= render @song %>
-        <%= render partial: 'comments', collection: @song.comments %>
+        <%= render partial: 'songs/comments/comments', locals: {:comments => @song.comments} %>
       </div>
     </main>
 

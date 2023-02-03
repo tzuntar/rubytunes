@@ -1,0 +1,14 @@
+<div class="grid-container comment-grid">
+  <div class="grid-col">
+    <%= link_to image_tag('icons/avatar', class: 'round-profile-photo', alt: "Commenter's Profile Photo"),
+                'FIX THE URL' %>
+  </div>
+  <div class="grid-col">
+    <p>
+      <strong>
+        <%= comment.user.name %></strong> at <strong><%= comment.created_at.strftime('%m/%d/%Y %H:%m') %></strong>
+    </p>
+    <?php } ?>
+    <p><%= comment.body %></p>
+  </div>
+</div>

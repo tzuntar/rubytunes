@@ -1,0 +1,15 @@
+<section class="comment-division padding-lr-20">
+  <form method="post" enctype="multipart/form-data"
+        action="post_comment.php?song=<?= $songData->id ?>">
+    <label>
+      <input name="comment" class="comment-entry" placeholder="Write a comment..."
+             type="text" required/>
+    </label>
+    <input class="neutral-button" type="submit" value="Post"/>
+  </form>
+  <% if comments.count < 1 %>
+    <p class="fine-print">No comments yet</p>
+  <% else %>
+    <%= render partial: 'songs/comments/comment', collection: comments %>
+  <% end %>
+</section>
