@@ -6,7 +6,7 @@
   <div class="grid-col">
     <p>
       <strong>
-        <%= comment.user.name %></strong> at <strong><%= comment.created_at.strftime('%m/%d/%Y %H:%m') %></strong>
+        <%= comment.user.name %></strong> • <%= time_ago_in_words comment.created_at %> ago
     </p>
     <?php } ?>
     <p><%= comment.body %></p>

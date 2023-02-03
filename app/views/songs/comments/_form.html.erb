@@ -1,0 +1,6 @@
+<%= form_with model: [song, comment] do |form| %>
+  <%= form.text_field :body, class: 'comment-entry',
+                      placeholder: 'Write a comment...',
+                      required: true %>
+  <%= form.submit 'Post', class: 'neutral-button' %>
+<% end %>
