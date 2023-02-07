@@ -26,14 +26,20 @@ class SongsController < ApplicationController
     @song = Song.new(title: song_params[:title])
     @song.mp3.attach(song_params[:mp3])
     @song.album = Album.find_or_create_by(title: song_params[:album_title])
+    # the current user is also the main author
+    @song.artists.push(Artist.find_or_create_by(name: current_user.name))
     song_params[:collaborators].split(',').each do |collaborator|
       @song.artists.push(Artist.find_or_create_by(name: collaborator.strip))
     end
-    song_params[:album_artists].split(',').each do |artist|
-      @song.album.artists.push(Artist.find_or_create_by(name: artist.strip))
+    @song.album.artists.push(Artist.find_or_create_by(name: current_user.name))
+    song_params[:album_collaborators].split(',').each do |collaborator|
+      @song.album.artists.push(Artist.find_or_create_by(name: collaborator.strip))
     end
     @song.user = current_user
-    # todo: tags, genre
+    @song.genre = Genre.find_or_create_by(name: song_params[:genre])
+    song_params[:tags].split(',').each do |tag|
+      @song.tags.push(Tag.find_or_create_by(name: tag.strip))
+    end
 
     respond_to do |format|
       if @song.save
@@ -79,6 +85,6 @@ class SongsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def song_params
     params.require(:song).permit(:mp3, :title, :collaborators, :album_title,
-                                 :album_artists, :genre, :tags, :terms_of_service)
+                                 :album_collaborators, :genre, :tags, :terms_of_service)
   end
 end

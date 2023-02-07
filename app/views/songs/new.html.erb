@@ -31,7 +31,7 @@
                 </tr>
                 <tr>
                   <td><p class="field-label">Collaborators:</p></td>
-                  <td><%= form.text_field :collaborators, required: true,
+                  <td><%= form.text_field :collaborators,
                                           placeholder: 'Collaborator names (separated by commas)' %></td>
                 </tr>
                 <tr>
@@ -40,16 +40,16 @@
                 </tr>
                 <tr>
                   <td><p class="field-label">...by:</p></td>
-                  <td><%= form.text_field :album_artists, required: true,
-                                          placeholder: 'Album artist names (separated by commas)' %></td>
+                  <td><%= form.text_field :album_collaborators,
+                                          placeholder: 'Album collaborators (separated by commas)' %></td>
                 </tr>
                 <tr>
                   <td><p class="field-label">Genre:</p></td>
-                  <td><%= form.text_field :genre, placeholder: 'Song genre', required: true %></td>
+                  <td><%= form.text_field :genre, placeholder: 'Hip-Hop', required: true %></td>
                 </tr>
                 <tr>
                   <td><p class="field-label">Tags:</p></td>
-                  <td><%= form.text_field :tags, placeholder: 'Tags (separated by commas)' %></td>
+                  <td><%= form.text_field :tags, placeholder: 'hiphop, r&b, westcoast' %></td>
                 </tr>
               </table>
             </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_174628) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_170334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_174628) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.integer "year"
@@ -93,8 +99,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_174628) do
     t.datetime "updated_at", null: false
     t.bigint "album_id", null: false
     t.bigint "user_id"
+    t.bigint "genre_id"
     t.index ["album_id"], name: "index_songs_on_album_id"
+    t.index ["genre_id"], name: "index_songs_on_genre_id"
     t.index ["user_id"], name: "index_songs_on_user_id"
+  end
+
+  create_table "songs_tags", id: false, force: :cascade do |t|
+    t.bigint "song_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["song_id", "tag_id"], name: "index_songs_tags_on_song_id_and_tag_id"
+    t.index ["tag_id", "song_id"], name: "index_songs_tags_on_tag_id_and_song_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,5 +143,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_174628) do
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
   add_foreign_key "songs", "albums"
+  add_foreign_key "songs", "genres"
   add_foreign_key "songs", "users"
+  add_foreign_key "songs_tags", "songs"
+  add_foreign_key "songs_tags", "tags"
 end

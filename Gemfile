@@ -36,6 +36,9 @@ gem "redis", "~> 4.0"
 # Use Devise for authentication
 gem "devise"
 
+# Reading and writing MP3 tags
+gem "mp3info"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
