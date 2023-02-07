@@ -2,7 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "./combobox"
-import "./mp3player"
 
 const getImgMutedColorRgb = function (sourceTagId) {
     const colors = new Vibrant(document.getElementById(sourceTagId));

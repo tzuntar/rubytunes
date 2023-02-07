@@ -8,6 +8,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.16.16",
+    "jquery": "^3.6.3",
     "sass": "^1.57.1"
   },
   "scripts": {

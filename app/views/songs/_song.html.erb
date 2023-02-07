@@ -1,3 +1,4 @@
+<%= javascript_include_tag "mp3player.js", "data-turbo-track": "reload", defer: true %>
 <section class="song-player-division grid-container">
   <div class="grid-col">
     <button id="playButton" class="play-button">
@@ -50,3 +51,10 @@
     <%= link_to 'View Profile →', url_for(song.artists.first), class: 'action-link fine-print' %>
   </div>
 </section>
+<script>
+    $(document).ready(() => {
+        const vibrantColor = getImgVibrantColorRgb('albumArtBox');
+        $('.song-name')[0].style.color = vibrantColor;
+        initAudioPlayer("<%= url_for Song.first.mp3 %>", vibrantColor);
+    });
+</script>

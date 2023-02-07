@@ -1,0 +1,47 @@
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
+
+    <main>
+      <h2 class="accent padding-20">User Preferences</h2>
+      <form class="margin-top-20" method="post" enctype="multipart/form-data">
+        <h2 class="accent margin-lr-20 light-underline">Change Password</h2>
+        <div class="grid-container user-edit-grid margin-top-20">
+          <table class="edit-table">
+            <tr>
+              <td><p class="field-label">Password:</p></td>
+              <td><label>
+                <input type="password" name="password" placeholder="New password"/>
+              </label></td>
+            </tr>
+            <tr>
+              <td><p class="field-label">Confirm:</p></td>
+              <td><label>
+                <input type="password" name="confirm_password" placeholder="Re-enter the password"/>
+              </label></td>
+            </tr>
+          </table>
+        </div>
+
+        <h2 class="accent margin-lr-20 light-underline">Change Profile Photo</h2>
+        <div class="grid-container user-edit-grid margin-top-20">
+          <div class="grid-col">
+            <div class="grid-row">
+              <p class="field-label">Upload an image:</p>
+            </div>
+          </div>
+          <div class="grid-col">
+            <label>
+              <input type="file" name="profile_photo" accept=".jpg,.jpeg,.png,.gif" class="margin-top-20"/>
+            </label>
+          </div>
+        </div>
+        <p class="header-center">
+          <input type="submit" value="Save" class="margin-top-20"/>
+        </p>
+      </form>
+    </main>
+
+  </div>
+</div>

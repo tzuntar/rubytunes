@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :songs do
     resources :comments, only: [:create, :update, :destroy]
   end
-  #get '/song/upload', to: 'songs#upload', as: 'song_upload'
+  get '/user/preferences', to: 'users#preferences', as: 'user_preferences'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

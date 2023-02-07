@@ -8,7 +8,7 @@
     </form>
   </div>
   <div class="profile-photo">
-    <a href="user_settings.php">
+    <a href="<%= user_preferences_url %>">
       <div class="flex-container">
         <%= image_tag current_user.profile_pic.attached? ? current_user.profile_pic : 'icons/avatar' %>
         <p><%= current_user.name %></p>

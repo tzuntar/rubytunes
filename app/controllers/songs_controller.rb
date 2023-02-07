@@ -23,8 +23,17 @@ class SongsController < ApplicationController
 
   # POST /songs or /songs.json
   def create
-    @song = Song.new(song_params)
+    @song = Song.new(title: song_params[:title])
     @song.mp3.attach(song_params[:mp3])
+    @song.album = Album.find_or_create_by(title: song_params[:album_title])
+    song_params[:collaborators].split(',').each do |collaborator|
+      @song.artists.push(Artist.find_or_create_by(name: collaborator.strip))
+    end
+    song_params[:album_artists].split(',').each do |artist|
+      @song.album.artists.push(Artist.find_or_create_by(name: artist.strip))
+    end
+    @song.user = current_user
+    # todo: tags, genre
 
     respond_to do |format|
       if @song.save
@@ -69,13 +78,7 @@ class SongsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def song_params
-    song_params = params.require(:song)
-    song_params[album_attributes: [:title]] ||= song_params[:album_title]
-    #song_params[album_attributes: [:artists]] ||= song_params[:album_artists]
-    song_params.permit(:title, :year, :mp3, album_attributes: [:title])
-    #params.require(:song)
-    #      .permit(:title, :year, :mp3,
-    #              album_attributes: [:album_title, :album_artists])
-    # ToDo: tags, genre
+    params.require(:song).permit(:mp3, :title, :collaborators, :album_title,
+                                 :album_artists, :genre, :tags, :terms_of_service)
   end
 end
