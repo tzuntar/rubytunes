@@ -1,4 +1,5 @@
 <%= javascript_include_tag "mp3player.js", "data-turbo-track": "reload", defer: true %>
+<%= javascript_include_tag "startaudio.js", "data-turbo-track": "reload", defer: true %>
 <section class="song-player-division grid-container">
   <div class="grid-col">
     <button id="playButton" class="play-button">
@@ -15,7 +16,7 @@
     <h1 class="song-name accent"><%= song.title %></h1>
     <div class="grid-row">
       <div id="mp3player-container">
-        <div id="mp3player">
+        <div id="mp3player" data-mp3="<%= polymorphic_url @song.mp3 %>">
           <canvas id="analyzer-render"></canvas>
         </div>
         <label>
@@ -51,10 +52,3 @@
     <%= link_to 'View Profile →', url_for(song.artists.first), class: 'action-link fine-print' %>
   </div>
 </section>
-<script>
-    $(document).ready(() => {
-        const vibrantColor = getImgVibrantColorRgb('albumArtBox');
-        $('.song-name')[0].style.color = vibrantColor;
-        initAudioPlayer("<%= url_for Song.first.mp3 %>", vibrantColor);
-    });
-</script>

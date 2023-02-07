@@ -33,9 +33,6 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-# JQuery
-gem "jquery-rails"
-
 # Use Devise for authentication
 gem "devise"
 

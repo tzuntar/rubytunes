@@ -4,7 +4,7 @@ audio.autoplay = false;
 
 let canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
 
-function initMp3Player(rgbBarColor) {
+window.initMp3Player = function (rgbBarColor) {
     context = new AudioContext();
     analyser = context.createAnalyser();
     canvas = document.getElementById('analyzer-render');
@@ -15,7 +15,7 @@ function initMp3Player(rgbBarColor) {
     frameLooper(rgbBarColor);
 }
 
-function frameLooper(rgbBarColor) {
+window.frameLooper = function (rgbBarColor) {
     window.requestAnimationFrame(frameLooper);
     fbc_array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(fbc_array);
@@ -30,7 +30,7 @@ function frameLooper(rgbBarColor) {
     }
 }
 
-function initAudioPlayer(mp3path, rgbBarColor = "000") {
+window.initAudioPlayer = function (mp3path, rgbBarColor = "000") {
     let playButton, seekSlider, volumeSlider,
         seeking = false, current_time, duration_time;
     audio.src = mp3path;
@@ -61,8 +61,8 @@ function initAudioPlayer(mp3path, rgbBarColor = "000") {
         if (context == null)
             initMp3Player(rgbBarColor);
         if (audio.paused) {
-            audio.play();
-            playButton.children[0].src = './assets/img/icons/pause.svg';
+            audio.play()
+                .then(() => playButton.children[0].src = './assets/img/icons/pause.svg');
         } else {
             audio.pause();
             playButton.children[0].src = './assets/img/icons/play.svg';
