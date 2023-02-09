@@ -10,6 +10,9 @@ class SongsController < ApplicationController
 
   # GET /songs/1 or /songs/1.json
   def show
+    #if @song.album.album_art.blank?
+      #fetch_album_art
+    #end
   end
 
   # GET /songs/new
@@ -37,7 +40,7 @@ class SongsController < ApplicationController
     end
     @song.user = current_user
     @song.genre = Genre.find_or_create_by(name: song_params[:genre])
-    song_params[:tags].split(',').each do |tag|
+    song_params[:tags_entry].split(',').each do |tag|
       @song.tags.push(Tag.find_or_create_by(name: tag.strip))
     end
 
@@ -75,6 +78,18 @@ class SongsController < ApplicationController
     end
   end
 
+  # GET /search
+  # ToDo: move someplace else
+  def search
+    @songs = Song.search(params[:query])
+  end
+
+  # GET /user/:id/songs
+  def index_by_user
+    @user = User.find(params[:user_id])
+    @songs = @user.songs
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -85,6 +100,25 @@ class SongsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def song_params
     params.require(:song).permit(:mp3, :title, :collaborators, :album_title,
-                                 :album_collaborators, :genre, :tags, :terms_of_service)
+                                 :album_collaborators, :genre, :tags_entry, :terms_of_service,
+                                 :query)
   end
+
+  def fetch_album_art
+    path = ActiveStorage::Blob.service.send(:path_for, @song.mp3.key)
+    Mp3Info.open(path) do |mp3|
+      pictures = mp3.tag2.pictures
+      pictures.each do |description, data|
+        path = "tmp/#{description}"
+        File.binwrite(path, data)
+
+        @song.album.album_art = ActiveStorage::Blob.create_after_upload!(
+          io: File.open(path),
+          filename: description,
+          content_type: 'image/jpeg'
+        )
+      end
+    end
+  end
+
 end

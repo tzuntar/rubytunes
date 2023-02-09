@@ -1,0 +1,14 @@
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
+
+    <main>
+      <h2 class="accent padding-20">Songs by <%= @user.name %></h2>
+      <div class="margin-top-20">
+        <%= render partial: 'card', collection: @songs %>
+      </div>
+    </main>
+
+  </div>
+</div>

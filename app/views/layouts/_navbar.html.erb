@@ -1,11 +1,9 @@
 <nav>
   <%= image_tag 'icons/menu', alt: 'Menu', class: 'menu-toggle', onclick: 'toggleMenu()' %>
   <div class="search-box">
-    <form action="search">
-      <label>
-        <input type="text" placeholder="Search..." class="search-box" name="query"/>
-      </label>
-    </form>
+    <%= form_for search_path, url: search_path, method: :get do |s| %>
+      <%= s.text_field :query, placeholder: 'Search...', class: 'search-box' %>
+    <% end %>
   </div>
   <div class="profile-photo">
     <a href="<%= user_preferences_url %>">
