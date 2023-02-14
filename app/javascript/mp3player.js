@@ -62,10 +62,10 @@ window.initAudioPlayer = function (mp3path, rgbBarColor = "000") {
             initMp3Player(rgbBarColor);
         if (audio.paused) {
             audio.play()
-                .then(() => playButton.children[0].src = './assets/img/icons/pause.svg');
+                .then(() => playButton.children[0].src = '/pause.svg');
         } else {
             audio.pause();
-            playButton.children[0].src = './assets/img/icons/play.svg';
+            playButton.children[0].src = '/play.svg';
         }
     }
 
