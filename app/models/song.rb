@@ -4,7 +4,7 @@ class Song < ApplicationRecord
   has_and_belongs_to_many :tags
   has_many :comments
   has_one_attached :mp3
-  has_one :genre
+  belongs_to :genre, dependent: :destroy
   belongs_to :album, dependent: :destroy
   belongs_to :user, dependent: :destroy
   accepts_nested_attributes_for :album
