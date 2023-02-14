@@ -44,7 +44,7 @@
     <h2><%= link_to song.artists.first.name, url_for(song.artists.first), class: 'accent' %>
       <% if song.artists.count > 1 %>
         <strong class="fine-print"> • </strong>
-        <% song.artists[1..1] do |artist| %>
+        <% song.artists[1..].each do |artist| %>
           <%= link_to artist.name, url_for(artist), class: 'action-link fine-print' %>
         <% end %>
       <% end %>
