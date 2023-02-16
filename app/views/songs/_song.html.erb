@@ -5,12 +5,10 @@
     <button id="playButton" class="play-button">
       <%= image_tag 'icons/play', alt: 'Play', id: 'playIcon' %>
     </button>
-    <a href="song.php?id=<?= $_GET['id'] ?>&action=save">
-      <button id="saveButton" class="play-button">
-        <%# ToDo: use the 'unsave' icon if the song's already been saved %>
-        <%= image_tag 'icons/save', class: 'icon-make-smaller', alt: 'Save' %>
-      </button>
-    </a>
+    <% if song.user == current_user or current_user.admin %>
+      <%= edit_button %>
+      <%= delete_button %>
+    <% end %>
   </div>
   <div class="grid-col">
     <h1 class="song-name accent"><%= song.title %></h1>

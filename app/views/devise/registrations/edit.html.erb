@@ -5,7 +5,8 @@
 
     <main>
       <h1 class="accent padding-20">User Preferences</h1>
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), class: 'margin-top-20', html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+                   class: 'margin-top-20', html: { method: :put, multipart: true }) do |f| %>
         <h2 class="accent margin-lr-20 light-underline">Change Password</h2>
         <%= render "devise/shared/error_messages", resource: resource %>
         <%= f.hidden_field :reset_password_token %>
