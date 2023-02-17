@@ -1,7 +1,8 @@
 <div class="grid-container comment-grid">
   <div class="grid-col">
-    <%= link_to image_tag('icons/avatar', class: 'round-profile-photo', alt: "Commenter's Profile Photo"),
-                'FIX THE URL' %>
+    <%= image_tag comment.user.profile_pic_thumbnail,
+                  class: 'round-profile-photo',
+                  alt: "Commenter's Profile Photo" %>
   </div>
   <div class="grid-col">
     <p>

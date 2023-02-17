@@ -1,7 +1,6 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
-import "./combobox"
 import Vibrant from "node-vibrant/lib/bundle";
 
 import jquery from 'jquery'

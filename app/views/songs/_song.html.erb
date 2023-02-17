@@ -8,6 +8,7 @@
     <% if song.user == current_user or current_user.admin %>
       <%= edit_button %>
       <%= delete_button %>
+      <%# fix the padding: padding-bottom: 1em; %>
     <% end %>
   </div>
   <div class="grid-col">
@@ -31,7 +32,7 @@
   </div>
   <div class="grid-col flex-column">
     <p>&nbsp;</p>
-    <%= image_tag 'icons/avatar', class: 'album-art-big flex-end', id: 'albumArtBox', alt: 'Album Art' %>
+    <%= album_art_or_placeholder @song, 'album-art-big flex-end' %>
   </div>
 </section>
 <section class="artist-division grid-container padding-lr-20">

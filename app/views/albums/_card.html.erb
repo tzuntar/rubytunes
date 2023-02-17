@@ -1,7 +1,7 @@
 <div class="song-list-card">
   <div class="flex-container">
     <div>
-      <%= image_tag 'icons/avatar.svg', alt: "Album Art", class: 'album-art-list' %>
+      <%= album_art_or_placeholder_for_album card, 'album-art-list' %>
     </div>
     <div>
       <p><%= link_to card.title, url_for(card) %></p>

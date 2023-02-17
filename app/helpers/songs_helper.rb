@@ -16,4 +16,9 @@ module SongsHelper
     end
   end
 
+  def album_art_or_placeholder(song, classes)
+    url = song.album.album_art.attached? ? polymorphic_url(song.album.album_art.attachment) : 'icons/avatar'
+    image_tag(url, class: classes, id: 'albumArtBox', alt: 'Album Art')
+  end
+
 end

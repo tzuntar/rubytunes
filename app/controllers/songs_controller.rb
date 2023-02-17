@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   before_action :set_song, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :authorize_user, only: %i[edit update destroy]
+  #before_action :authorize_user, only: %i[edit update destroy]
 
   # GET /songs or /songs.json
   def index
@@ -10,9 +10,6 @@ class SongsController < ApplicationController
 
   # GET /songs/1 or /songs/1.json
   def show
-    #if @song.album.album_art.blank?
-      #fetch_album_art
-    #end
   end
 
   # GET /songs/new
@@ -22,6 +19,9 @@ class SongsController < ApplicationController
 
   # GET /songs/1/edit
   def edit
+    #@song.collaborators = @song.artists
+    #@song.album_title = @song.album.title
+    #@song.album_collaborators = @song.album.artists
   end
 
   # POST /songs or /songs.json
@@ -46,6 +46,9 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
+        if @song.album.album_art.blank?
+          fetch_album_art
+        end
         format.html { redirect_to song_url(@song), notice: "Song was successfully created." }
         format.json { render :show, status: :created, location: @song }
       else
@@ -112,7 +115,7 @@ class SongsController < ApplicationController
         path = "tmp/#{description}"
         File.binwrite(path, data)
 
-        @song.album.album_art = ActiveStorage::Blob.create_after_upload!(
+        @song.album.album_art.attach ActiveStorage::Blob.create_and_upload!(
           io: File.open(path),
           filename: description,
           content_type: 'image/jpeg'

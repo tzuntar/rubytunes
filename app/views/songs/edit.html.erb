@@ -1,10 +1,93 @@
-<h1>Editing song</h1>
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
 
-<%= render "form", song: @song %>
+    <main class="padding-20">
+      <h2 class="accent">Edit Song Data</h2>
+      <%= form_with model: @song, class: 'margin-top-20' do |form| %>
+        <div class="grid-container meta-edit-grid">
+          <div class="grid-col">
+            <table class="edit-table">
+              <tr>
+                <td><p class="field-label">Title:</p></td>
+                <td><%= form.text_field :title, placeholder: 'Song title', required: true %></td>
+              </tr>
+              <tr>
+                <td><p class="field-label">Collaborators:</p></td>
+                <td><%= form.text_field :collaborators,
+                                        placeholder: 'Collaborator names (separated by commas)' %></td>
+                <!-- reconsider this -->
+                <!--   <td>-->
+                <!--     <span id="combo3-remove" style="display: none">remove</span>-->
+                <!--     <ul class="selected-options" id="artist-combo-selected"></ul>-->
+                <!--     <div class="combo js-multiselect">-->
+                <!--       <input aria-activedescendant=""-->
+                <!--              aria-autocomplete="none"-->
+                <!--              aria-controls="artist-listbox"-->
+                <!--              aria-expanded="false"-->
+                <!--              aria-haspopup="listbox"-->
+                <!--              aria-labelledby="artist-combo artist-combo-selected"-->
+                <!--              id="artist-combo"-->
+                <!--              name="artist-combo"-->
+                <!--              class="combo-input"-->
+                <!--              role="combobox"-->
+                <!--              placeholder="Search for artists..."-->
+                <!--              type="text"/>-->
+                <!--       <div class="combo-menu" role="listbox" id="artist-listbox"></div>-->
+                <!--     </div>-->
+                <!--   </td>-->
+              </tr>
+              <tr>
+                <td><p class="field-label">Album:</p></td>
+                <td><%= form.text_field :album_title, placeholder: 'Album title', required: true %></td>
+              </tr>
+              <tr>
+                <td><p class="field-label">...by:</p></td>
+                <td><%= form.text_field :album_collaborators,
+                                        placeholder: 'Album collaborators (separated by commas)' %></td>
+              </tr>
+              <tr>
+                <td><p class="field-label">Genre:</p></td>
+                <td><%= form.text_field :genre, placeholder: 'Hip-Hop', required: true %></td>
+              </tr>
+              <tr>
+                <td><p class="field-label">Tags:</p></td>
+                <td><%= form.text_field :tags_entry, placeholder: 'hiphop, r&b, westcoast' %></td>
+              </tr>
+            </table>
+          </div>
+          <%# if @song.album.album_art.present? %>
+          <!--<div class="grid-col">
+              <%= image_tag 'icons/avatar', class: 'album-art-big', alt: 'Album Art' %>
+            </div>-->
+          <%# end %>
+        </div>
+        <p class="header-center">
+          <%= form.submit value: 'Update', class: 'margin-top-20' %>
+        </p>
 
-<br>
+        </main>
+      <% end %>
 
-<div>
-  <%= link_to "Show this song", @song %> |
-  <%= link_to "Back to songs", songs_path %>
+      <%= javascript_include_tag "combobox.js", "data-turbo-track": "reload", defer: true %>
+      <script>
+          // const artists = [];
+          // <?php if (isset($song->artists))
+          //     foreach ($song->artists as $artist)
+          // echo "artists.push({text: `" . html_entity_decode($artist->name) . "`, selected: true});";
+          // foreach ($artistsNotIn as $entry)
+          // echo "artists.push({text: `" . html_entity_decode($entry['name']) . "`, selected: false});" ?>
+          // const comboBox = initMultiselect('.js-multiselect', artists);
+
+          // function syncArtists() {
+          //     let items = '';
+          //     comboBox.selectedEl.querySelectorAll('li').forEach(li => items += li.outerText.replace('"', '\\"') + ',');
+          //     document.getElementById('artistsHidden').value = items.substring(0, items.length - 1);
+          // }
+
+          // syncArtists();
+          // document.getElementById('artist-combo').addEventListener('change', () => syncArtists(), false);
+      </script>
+      </div>
 </div>
