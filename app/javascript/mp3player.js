@@ -16,6 +16,8 @@ window.initMp3Player = function (rgbBarColor) {
 }
 
 window.frameLooper = function (rgbBarColor) {
+    if (analyser === undefined)
+        return;
     window.requestAnimationFrame(frameLooper);
     fbc_array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(fbc_array);
