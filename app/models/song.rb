@@ -13,9 +13,4 @@ class Song < ApplicationRecord
   accepts_nested_attributes_for :tags
 
   scope :filter_by_user, -> (user) { where user_id: user.user_id }
-
-  def self.search(query)
-    return @songs = Song.all unless query
-    @songs = Song.find_by_title query
-  end
 end

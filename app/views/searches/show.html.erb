@@ -1,0 +1,34 @@
+<div class="body-flex">
+  <%= render 'layouts/sidebar' %>
+  <div class="root-container">
+    <%= render 'layouts/navbar' %>
+
+    <main>
+      <div class="margin-top-20">
+        <h2 class="accent padding-20">Search Results</h2>
+        <div class="margin-top-20">
+          <% if @results[:songs] == nil and @results[:albums] == nil and @results[:artists] == nil %>
+            <div class="full-center text-center">
+              <h1 class="full-alert">No Results</h1>
+              <p class="fine-print">Try rewording your query</p>
+            </div>
+          <% else %>
+            <% if @results[:songs].count > 0 %>
+              <h2 class="accent margin-lr-20 light-underline">Songs</h2>
+              <%= render partial: 'songs/card', collection: @results[:songs] %>
+            <% end %>
+            <% if @results[:albums].count > 0 %>
+              <h2 class="accent margin-lr-20 light-underline">Albums</h2>
+              <%= render partial: 'albums/card', collection: @results[:albums] %>
+            <% end %>
+            <% if @results[:artists].count > 0 %>
+              <h2 class="accent margin-lr-20 light-underline">Artists</h2>
+              <%= render partial: 'artists/card', collection: @results[:artists] %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</div>

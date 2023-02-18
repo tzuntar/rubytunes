@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy]
   end
   get '/user/:user_id/songs', to: 'songs#index_by_user'
-  get '/search', to: 'songs#search', as: 'search'
+  get '/search', to: 'search#show', as: 'search'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -81,12 +81,6 @@ class SongsController < ApplicationController
     end
   end
 
-  # GET /search
-  # ToDo: move someplace else
-  def search
-    @songs = Song.search(params[:query])
-  end
-
   # GET /user/:id/songs
   def index_by_user
     @user = User.find(params[:user_id])
