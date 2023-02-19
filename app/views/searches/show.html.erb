@@ -13,15 +13,15 @@
               <p class="fine-print">Try rewording your query</p>
             </div>
           <% else %>
-            <% if @results[:songs].count > 0 %>
+            <% if @results[:songs] != nil and @results[:songs].count > 0 %>
               <h2 class="accent margin-lr-20 light-underline">Songs</h2>
               <%= render partial: 'songs/card', collection: @results[:songs] %>
             <% end %>
-            <% if @results[:albums].count > 0 %>
+            <% if @results[:albums] != nil and @results[:albums].count > 0 %>
               <h2 class="accent margin-lr-20 light-underline">Albums</h2>
               <%= render partial: 'albums/card', collection: @results[:albums] %>
             <% end %>
-            <% if @results[:artists].count > 0 %>
+            <% if @results[:artists] != nil and @results[:artists].count > 0 %>
               <h2 class="accent margin-lr-20 light-underline">Artists</h2>
               <%= render partial: 'artists/card', collection: @results[:artists] %>
             <% end %>

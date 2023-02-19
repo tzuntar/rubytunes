@@ -10,9 +10,9 @@ class SearchController < ApplicationController
 
   def run_query
     @results = {
-      songs: Song.find_by_title("%#{:query}%"),
-      albums: Album.find_by_title("%#{:query}%"),
-      artists: Artist.find_by_name("%#{:query}%")
+      songs: Song.where("UPPER(title) LIKE ?", "%#{:query.upcase}%") ,
+      albums: Album.where("UPPER(title) LIKE ?", "%#{:query.upcase}%"),
+      artists: Artist.where("UPPER(name) LIKE ?", "%#{:query.upcase}%")
     }
   end
 
