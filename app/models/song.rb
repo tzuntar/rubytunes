@@ -2,8 +2,8 @@ class Song < ApplicationRecord
   validates_presence_of :title
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :tags
-  has_many :comments
   has_one_attached :mp3
+  has_many :comments, dependent: :destroy
   belongs_to :genre, dependent: :destroy
   belongs_to :album, dependent: :destroy
   belongs_to :user, dependent: :destroy

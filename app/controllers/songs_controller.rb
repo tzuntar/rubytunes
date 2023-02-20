@@ -19,9 +19,6 @@ class SongsController < ApplicationController
 
   # GET /songs/1/edit
   def edit
-    #@song.collaborators = @song.artists
-    #@song.album_title = @song.album.title
-    #@song.album_collaborators = @song.album.artists
   end
 
   # POST /songs or /songs.json
@@ -60,6 +57,25 @@ class SongsController < ApplicationController
 
   # PATCH/PUT /songs/1 or /songs/1.json
   def update
+    @song.album.destroy
+    @song.album = Album.find_or_create_by(title: song_params[:album_title])
+    @song.genre = Genre.find_or_create_by(name: song_params[:genre])
+
+    #@song.artists.destroy_all
+    song_params[:collaborators].split(',').each do |collaborator|
+      @song.artists.push(Artist.find_or_create_by(name: collaborator.strip))
+    end
+
+    #@song.album.artists.destroy_all
+    song_params[:album_collaborators].split(',').each do |collaborator|
+      @song.album.artists.push(Artist.find_or_create_by(name: collaborator.strip))
+    end
+
+    #@song.tags.destroy_all
+    song_params[:tags_entry].split(',').each do |tag|
+      @song.tags.push(Tag.find_or_create_by(name: tag.strip))
+    end
+
     respond_to do |format|
       if @song.update(song_params)
         format.html { redirect_to song_url(@song), notice: "Song was successfully updated." }

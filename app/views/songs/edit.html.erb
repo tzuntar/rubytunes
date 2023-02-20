@@ -5,18 +5,18 @@
 
     <main class="padding-20">
       <h2 class="accent">Edit Song Data</h2>
-      <%= form_with model: @song, class: 'margin-top-20' do |form| %>
+      <%= form_tag song_path, method: :patch, class: 'margin-top-20' do %>
         <div class="grid-container meta-edit-grid">
           <div class="grid-col">
             <table class="edit-table">
               <tr>
                 <td><p class="field-label">Title:</p></td>
-                <td><%= form.text_field :title, placeholder: 'Song title', required: true %></td>
+                <td><%= text_field_tag 'title', @song.title, placeholder: 'Song title', readonly: true, disabled: true %></td>
               </tr>
               <tr>
                 <td><p class="field-label">Collaborators:</p></td>
-                <td><%= form.text_field :collaborators,
-                                        placeholder: 'Collaborator names (separated by commas)' %></td>
+                <td><%= text_field_tag 'collaborators', @song.artists.map(&:name).join(', '),
+                                       placeholder: 'Collaborator names (separated by commas)' %></td>
                 <!-- reconsider this -->
                 <!--   <td>-->
                 <!--     <span id="combo3-remove" style="display: none">remove</span>-->
@@ -40,20 +40,21 @@
               </tr>
               <tr>
                 <td><p class="field-label">Album:</p></td>
-                <td><%= form.text_field :album_title, placeholder: 'Album title', required: true %></td>
+                <td><%= text_field_tag 'album_title', @song.album.title, placeholder: 'Album title', required: true %></td>
               </tr>
               <tr>
                 <td><p class="field-label">...by:</p></td>
-                <td><%= form.text_field :album_collaborators,
-                                        placeholder: 'Album collaborators (separated by commas)' %></td>
+                <td><%= text_field_tag 'album_collaborators', @song.album.artists.map(&:name).join(', '),
+                                       placeholder: 'Album collaborators (separated by commas)' %></td>
               </tr>
               <tr>
                 <td><p class="field-label">Genre:</p></td>
-                <td><%= form.text_field :genre, placeholder: 'Hip-Hop', required: true %></td>
+                <td><%= text_field_tag 'genre', (@song.genre.name if @song.genre.present?), placeholder: 'Hip-Hop', required: true %></td>
               </tr>
               <tr>
                 <td><p class="field-label">Tags:</p></td>
-                <td><%= form.text_field :tags_entry, placeholder: 'hiphop, r&b, westcoast' %></td>
+                <td><%= text_field_tag 'tags_entry', @song.tags.map(&:name).join(', '),
+                                       placeholder: 'hiphop, r&b, westcoast' %></td>
               </tr>
             </table>
           </div>
@@ -64,7 +65,7 @@
           <%# end %>
         </div>
         <p class="header-center">
-          <%= form.submit value: 'Update', class: 'margin-top-20' %>
+          <%= submit_tag 'Update', class: 'margin-top-20' %>
         </p>
 
         </main>
