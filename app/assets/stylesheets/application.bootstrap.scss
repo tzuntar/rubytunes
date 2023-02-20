@@ -380,6 +380,7 @@ input[type='submit'] {
   background-color: var(--sidebar-sel-color);
   grid-template-columns: 0.25fr 10fr 4fr;
   grid-template-rows: 120px 180px;
+  padding-bottom: 1em;
 }
 
 .song-name {

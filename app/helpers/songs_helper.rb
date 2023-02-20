@@ -9,7 +9,7 @@ module SongsHelper
   end
 
   def delete_button
-    link_to song_url, data: { confirm: 'Are you sure you would like to delete this song? This action cannot be undone' }, method: :delete do
+    link_to song_url, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you would like to delete this song? This action cannot be undone' } do
       button_tag class: 'play-button' do
         image_tag 'icons/delete', class: 'icon-make-smaller', alt: 'Delete'
       end
