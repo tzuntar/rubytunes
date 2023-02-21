@@ -57,7 +57,7 @@ class SongsController < ApplicationController
 
   # PATCH/PUT /songs/1 or /songs/1.json
   def update
-    @song.album.destroy
+    #@song.album.destroy
     @song.album = Album.find_or_create_by(title: song_params[:album_title])
     @song.genre = Genre.find_or_create_by(name: song_params[:genre])
 

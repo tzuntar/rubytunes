@@ -1,5 +1,5 @@
 <nav>
-  <%= image_tag 'icons/menu', alt: 'Menu', class: 'menu-toggle', onclick: 'toggleMenu()' %>
+  <%= image_tag 'icons/menu.svg', alt: 'Menu', class: 'menu-toggle', onclick: 'window.toggleMenu()' %>
   <div class="search-box">
     <%= form_tag search_path, method: :get do %>
       <%= text_field_tag 'query', nil, placeholder: 'Search...', class: 'search-box' %>

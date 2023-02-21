@@ -22,3 +22,7 @@ window.getImgVibrantColorRgb = function (sourceTagId) {
         return 'rgb(0, 0, 0)';
     }
 }
+
+window.toggleMenu = function () {
+    $('.sidebar').toggle();
+}

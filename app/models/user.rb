@@ -12,7 +12,7 @@ class User < ApplicationRecord
       #profile_pic.variant(resize: '150x150!').processed
       profile_pic
     else
-      'icons/avatar'
+      'icons/avatar.svg'
     end
   end
 end

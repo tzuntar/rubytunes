@@ -13,9 +13,6 @@
     <h1>Sign In</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :p, msg, :id => "flash_#{name}", :class => "flash" %>
-      <% end %>
       <% if notice.present? %>
         <p class="notice"><%= notice %></p>
       <% end %>

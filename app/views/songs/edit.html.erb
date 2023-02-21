@@ -58,11 +58,9 @@
               </tr>
             </table>
           </div>
-          <%# if @song.album.album_art.present? %>
-          <!--<div class="grid-col">
-              <%= image_tag 'icons/avatar', class: 'album-art-big', alt: 'Album Art' %>
-            </div>-->
-          <%# end %>
+          <div class="grid-col">
+            <%= album_art_or_placeholder @song, 'album-art-big flex-end padding-l-1em' %>
+          </div>
         </div>
         <p class="header-center">
           <%= submit_tag 'Update', class: 'margin-top-20' %>

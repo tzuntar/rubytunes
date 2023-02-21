@@ -3,7 +3,7 @@
 <section class="song-player-division grid-container">
   <div class="grid-col">
     <button id="playButton" class="play-button">
-      <%= image_tag 'icons/play', alt: 'Play', id: 'playIcon' %>
+      <%= image_tag 'icons/play.svg', alt: 'Play', id: 'playIcon' %>
     </button>
     <% if song.user == current_user or current_user.admin %>
       <%= edit_button %>
@@ -37,7 +37,7 @@
 </section>
 <section class="artist-division grid-container padding-lr-20">
   <div class="grid-col">
-    <%= image_tag 'icons/avatar', class: 'artist-photo', alt: "Artist's Photo" %>
+    <%= image_tag 'icons/avatar.svg', class: 'artist-photo', alt: "Artist's Photo" %>
   </div>
   <div class="grid-col">
     <h2><%= link_to song.artists.first.name, url_for(song.artists.first), class: 'accent' %>
