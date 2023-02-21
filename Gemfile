@@ -36,6 +36,11 @@ gem "redis", "~> 4.0"
 # Use Devise for authentication
 gem "devise"
 
+# Google OmniAuth
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+
 # Reading and writing MP3 tags
 gem "mp3info"
 

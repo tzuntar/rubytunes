@@ -38,7 +38,19 @@
       <% end %>
       <%= f.submit "Sign In", class: "margin-top-20" %>
     <% end %>
-    <p class="padding-top-20"><a class="action-link" href="redirect.php">Login with Google</a></p>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= form_for "Login",
+                     url: omniauth_authorize_path(resource_name, provider),
+                     method: :post,
+                     data: { turbo: "false" } do |f| %>
+          <p class="padding-top-20">
+            <%= f.submit "Login with Google", class: 'padding-top-20' %>
+          </p>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%# <p class="padding-top-20"><a class="action-link" href="redirect.php">Login with Google</a></p> %>
     <p class="padding-top-40">Don't have an account yet? Create a free account today</p>
     <a class="action-link" href="<%= new_registration_path(resource_name) %>">Create Account →</a>
     <p class="padding-top-20"><%= render "devise/shared/links" %></p>

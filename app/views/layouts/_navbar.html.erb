@@ -8,7 +8,7 @@
   <div class="profile-photo">
     <a href="<%= user_preferences_url %>">
       <div class="flex-container">
-        <%= image_tag current_user.profile_pic_thumbnail %>
+        <%= image_tag current_user.profile_pic_thumbnail, referrerpolicy: 'no-referrer' %>
         <p><%= current_user.name %></p>
       </div>
     </a>

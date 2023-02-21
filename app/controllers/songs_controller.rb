@@ -62,16 +62,21 @@ class SongsController < ApplicationController
     @song.genre = Genre.find_or_create_by(name: song_params[:genre])
 
     #@song.artists.destroy_all
+    @song.artists = []
     song_params[:collaborators].split(',').each do |collaborator|
       @song.artists.push(Artist.find_or_create_by(name: collaborator.strip))
     end
 
     #@song.album.artists.destroy_all
     song_params[:album_collaborators].split(',').each do |collaborator|
-      @song.album.artists.push(Artist.find_or_create_by(name: collaborator.strip))
+      artist = Artist.find_or_create_by(name: collaborator.strip)
+      unless @song.album.artists.include?(artist)
+        @song.album.artists.push(artist)
+      end
     end
 
     #@song.tags.destroy_all
+    @song.tags = []
     song_params[:tags_entry].split(',').each do |tag|
       @song.tags.push(Tag.find_or_create_by(name: tag.strip))
     end

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_scope :user  do
+  devise_scope :user do
     get '/user/preferences' => 'devise/registrations#edit', as: 'user_preferences'
   end
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   resources :albums
   resources :artists
   resources :songs do
