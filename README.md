@@ -30,9 +30,8 @@ purposes. See [deployment](#deployment) for notes on how to deploy the project o
 
 ### ✅ Prerequisites <a name = "prerequisites"></a>
 
-- PHP >= 7.4
-- Composer
-- A working MySQL instance
+- Ruby on Rails
+- A working PostgreSQL instance
 
 ### ⏳Installing
 
