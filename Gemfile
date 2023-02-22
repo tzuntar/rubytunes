@@ -33,6 +33,9 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# Fuzzy searching of ActiveRecord models
+gem "pg_search"
+
 # Use Devise for authentication
 gem "devise"
 

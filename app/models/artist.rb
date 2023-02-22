@@ -3,4 +3,9 @@ class Artist < ApplicationRecord
   has_and_belongs_to_many :albums, dependent: :destroy
   has_and_belongs_to_many :songs, dependent: :destroy
   has_one_attached :artist_photo
+
+  include PgSearch
+  pg_search_scope :kinda_spelled_like,
+                  :against => :name,
+                  :using => :trigram
 end

@@ -13,4 +13,9 @@ class Song < ApplicationRecord
   accepts_nested_attributes_for :tags
 
   scope :filter_by_user, -> (user) { where user_id: user.user_id }
+
+  include PgSearch
+  pg_search_scope :kinda_spelled_like,
+                  :against => :title,
+                  :using => :trigram
 end

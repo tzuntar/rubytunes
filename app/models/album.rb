@@ -4,4 +4,9 @@ class Album < ApplicationRecord
   has_and_belongs_to_many :artists, dependent: :destroy
   has_one_attached :album_art
   accepts_nested_attributes_for :artists
+
+  include PgSearch
+  pg_search_scope :kinda_spelled_like,
+                  :against => :title,
+                  :using => :trigram
 end
