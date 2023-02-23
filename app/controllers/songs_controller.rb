@@ -82,7 +82,7 @@ class SongsController < ApplicationController
     end
 
     respond_to do |format|
-      if @song.update(song_params)
+      if @song.save
         format.html { redirect_to song_url(@song), notice: "Song was successfully updated." }
         format.json { render :show, status: :ok, location: @song }
       else
