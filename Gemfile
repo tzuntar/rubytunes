@@ -33,8 +33,8 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-# ActiveStorage S3 adapter
-gem "aws-sdk-s3"
+# ActiveStorage Azure adapter
+gem "azure-storage"
 
 # Fuzzy searching of ActiveRecord models
 gem "pg_search"
