@@ -34,7 +34,9 @@ gem "jbuilder"
 gem "redis", "~> 4.0"
 
 # ActiveStorage Azure adapter
-gem "azure-storage"
+gem "azure-storage-blob", "~> 2.0"
+
+gem "dotenv"
 
 # Fuzzy searching of ActiveRecord models
 gem "pg_search"

@@ -28,10 +28,10 @@ local:
 microsoft:
    service: AzureStorage
    storage_account_name: 'rubyshramba'
-   storage_access_key: ENV["AZURE_KEY"]
-   #storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
-   #container: your_container_name-<%= Rails.env %>
-   container: ENV["AZURE_CONTAINER"]
+   storage_access_key: <%= ENV["AZURE_KEY"] %>
+   #storage_access_key: <%# Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
+   #container: your_container_name-<%# Rails.env %>
+   container: <%= ENV["AZURE_CONTAINER"] %>
 
 # mirror:
 #   service: Mirror
