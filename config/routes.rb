@@ -19,4 +19,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "songs#index"
+
+  # Public JSON API
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post 'authenticate', to: 'authentication#authenticate'
+      #resources :albums
+      #resources :artists
+      resources :songs# do
+      #resources :comments, only: [:create, :update, :destroy]
+      #end
+      get '/user/:user_id/songs', to: 'songs#index_by_user'
+    end
+  end
 end

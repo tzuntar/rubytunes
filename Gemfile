@@ -44,6 +44,10 @@ gem "pg_search"
 # Use Devise for authentication
 gem "devise"
 
+# JWT API authentication
+gem "jwt"
+gem "simple_command"
+
 # Google OmniAuth
 gem "omniauth"
 gem "omniauth-google-oauth2"
