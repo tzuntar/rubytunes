@@ -8,7 +8,7 @@
 ---
 
 This is the repository of RubyTunes, a music streaming platform that lets you
-best your favorite freestyles and stream those of others.
+upload your best freestyles and stream those of others.
 
 <img width="1223" alt="Skärmavbild 2023-12-19 kl  8 46 53 PM" src="https://github.com/tzuntar/rubytunes/assets/35228139/c9981f97-a49c-40db-ad01-f908d4028bc7">
 
