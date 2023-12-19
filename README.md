@@ -26,6 +26,7 @@ to ATLiens. Go to Outkast's Spotify profile for that one ;)</sub></p>
 - Browse user profiles and save your favorite songs to yours.
 - High quality search (not the plain string matching-based one).
 - Comments with linked timestamps.
+- Fully responsible UI with support for both mobile and desktop devices.
 - Full administration, available to privileged users, in the app itself.
 - Sign in with Google account.
 - Optionally outsource file storage to Amazon or other ActiveStorage-supported CDNs.
