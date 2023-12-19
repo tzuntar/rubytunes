@@ -7,21 +7,32 @@
 
 ---
 
-<p align="center">World's Most Epic Music Streaming Platform 
-    <br> 
-</p>
+This is the repository of RubyTunes, a music streaming platform that lets you
+upload your favorite freestyles and stream those of others.
+
+<img width="1223" alt="Skärmavbild 2023-12-19 kl  8 46 53 PM" src="https://github.com/tzuntar/rubytunes/assets/35228139/c9981f97-a49c-40db-ad01-f908d4028bc7">
+
+Made as a high school project back in 2022-23. The main premise of the app is that
+users can upload their own songs, the same way it works on Soundcloud.
+
+<p><sub>Note that the screenshot is purely informative and I (obviously) don't claim any rights
+to ATLiens. Go to Outkast's Spotify profile for that one ;)</sub></p>
+
+## 💎 Features
+
+- Music streaming with real-time graphical equalizer.
+- Upload your own songs and collabs with others (users or not).
+- Automatic MP3 metadata and album art linking directly from the files itself.
+- Browse user profiles and save your favorite songs to yours.
+- High quality search (not the plain string matching-based one).
+- Comments with linked timestamps.
 
 ## 📝 Table of Contents
 
-- [About](#about)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
-
-## 🎵 About <a name = "about"></a>
-
-This is the repository of RubyTunes, the best music streaming platform out there.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
