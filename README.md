@@ -22,10 +22,13 @@ to ATLiens. Go to Outkast's Spotify profile for that one ;)</sub></p>
 
 - Music streaming with real-time graphical equalizer.
 - Upload your own songs and collabs with others (users or not).
-- Automatic MP3 metadata and album art linking directly from the files itself.
+- Automatic MP3 metadata and album art linking directly from the files themselves.
 - Browse user profiles and save your favorite songs to yours.
 - High quality search (not the plain string matching-based one).
 - Comments with linked timestamps.
+- Full administration, available to privileged users, in the app itself.
+- Sign in with Google account.
+- Optionally outsource file storage to Amazon or other ActiveStorage-supported CDNs.
 - And Much Much More™.
   
 ---
